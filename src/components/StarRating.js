@@ -12,25 +12,53 @@ const StarRating1 = () => {
       
 }
 
-const Star = ({ selected = false }) => (
+const Star1 = ({ selected = false }) => (
     <FaStar color = {selected ? 'red' : 'grey' } />
 )
+
+const Star = ({ selected = false, onSelect = f => f }) => (
+    <FaStar color = {selected ? 'red' : 'grey' } onClick={onSelect} />
+)
+
 
 const createArray = length => [...Array(length)];
 
 const StarRating2 = ( {totalStars = 5} ) => {
     
-    return createArray(totalStars).map((n,i) => <Star key={i} /> );
+    return createArray(totalStars).map((n,i) => <Star1 key={i} /> );
 }
 
-const StarRating = ( {totalStars = 5} ) => {
+const StarRating3 = ( {totalStars = 5} ) => {
 
     const [selectedStars] = useState(3);
     
     return(
         <>
             {createArray(totalStars).map((n,i) => 
-            ( <Star key={i} selected = {selectedStars > i} /> ) )}
+            ( <Star1 key={i} selected = {selectedStars > i} /> ) )}
+
+            <p>
+                {selectedStars} of {totalStars} stars
+            </p>
+        </>
+    ) ;
+    
+    
+}
+
+const StarRating = ( {totalStars = 5} ) => {
+
+    const [selectedStars, setSelectedStars] = useState(0);
+    
+    return(
+        <>
+            {createArray(totalStars).map((n,i) => 
+            ( 
+            <Star 
+            key={i} 
+            selected = {selectedStars > i} 
+            onSelect = { () => setSelectedStars(i + 1) }
+            /> ) )}
 
             <p>
                 {selectedStars} of {totalStars} stars
