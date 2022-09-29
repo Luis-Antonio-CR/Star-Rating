@@ -46,12 +46,12 @@ const StarRating3 = ( {totalStars = 5} ) => {
     
 }
 
-const StarRating = ( {totalStars = 5} ) => {
+const StarRating = ( {style= {}, totalStars = 5} ) => {
 
     const [selectedStars, setSelectedStars] = useState(0);
     
     return(
-        <>
+        <div style={{padding: "5px", ...style}}>
             {createArray(totalStars).map((n,i) => 
             ( 
             <Star 
@@ -63,7 +63,7 @@ const StarRating = ( {totalStars = 5} ) => {
             <p>
                 {selectedStars} of {totalStars} stars
             </p>
-        </>
+        </div>
     ) ;
     
     

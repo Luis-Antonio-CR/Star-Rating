@@ -5,7 +5,7 @@ import StarRating from './components/StarRating';
 function App() {
   return (
     <div className="App">
-      <StarRating />
+      <StarRating style ={ {backgroundColor : "lightblue"} }/>
       
     </div>
   );
